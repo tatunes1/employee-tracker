@@ -1,0 +1,105 @@
+
+.navbar {
+    background: rgb(174, 227, 173);
+    box-shadow: 0 1px 3px rgba(15, 144, 110, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: rgb(24, 31, 223);
+  }
+  
+  /* Desktop menu */
+  .menu.desktop-menu {
+    list-style: none;
+    display: none; /* hidden on small screens */
+    gap: 24px; /* space between items */
+    color: #374151; /* gray-700 */
+    margin: 0;
+    padding: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .menu.desktop-menu {
+      display: flex;
+    }
+  
+    .mobile-menu-button {
+      display: none;
+    }
+  }
+  
+  .menu-item {
+    position: relative;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    color: #3b82f6; /* blue-500 */
+  }
+  
+  /* Submenu parent needs relative positioning */
+  .submenu-parent {
+    position: relative;
+  }
+  
+  /* Submenu */
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    width: 10rem; /* 40 Tailwind unit = 10rem */
+    background: white;
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 0 0 0.375rem 0.375rem; /* rounded-md */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Show submenu on hover */
+  .submenu-parent:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Submenu items */
+  .submenu-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submenu-item:hover {
+    background-color: #dbeafe; /* blue-100 */
+  }
+  
+  @media (max-width: 767px) {
+  
+    .menu.desktop-menu {
+      display: none;
+    }
+  }
+  
