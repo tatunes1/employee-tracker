@@ -1,10 +1,17 @@
 import { AddEmployeeRequest } from './constants';
+import { EmployeeDao } from '../../database/dao/employeeDao';
 import { EmployeeUtil } from './util';
 
-class EmployeeService {
+export class EmployeeService {
     constructor() {}
 
-    addEmployee = (request: AddEmployeeRequest) => {
+    static addEmployee = async (request: AddEmployeeRequest) => {
         const isValidReq = EmployeeUtil.validateAddEmployeeReq(request);
+        console.log('Req: ', request);
+        await EmployeeDao.addEmployee(request);
+        return {
+            status: 200,
+            message: 'Added employee successfully',
+        };
     };
 }

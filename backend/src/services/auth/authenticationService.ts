@@ -17,21 +17,33 @@ export class AuthService {
 
         const authHeader = req.header('Authorization');
         if (!authHeader) {
-            return res.status(401).send('Authorization header missing');
+            return {
+                status: 401,
+                message: 'Authorization header missing',
+            };
         }
 
         // Usually the header is like "Bearer <token>"
         const token = authHeader.split(' ')[1];
         if (!token) {
-            return res.status(401).send('Token missing');
+            return {
+                status: 401,
+                message: 'Token missing',
+            };
         }
 
         // Then verify token
         try {
             const decodedToken = jwt.verify(token, jwtSecretKey);
-            res.send(decodedToken).status(200);
+            return {
+                status: 200,
+                message: decodedToken
+            };
         } catch (error) {
-            return res.status(401).send('Invalid token');
+            return {
+                status: 401,
+                message: 'Invalid token',
+            };
         }
     };
 }
